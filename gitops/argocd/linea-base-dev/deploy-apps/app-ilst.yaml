@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ilst
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - name: eks-experiencianomonetario-dev
+  template:
+    metadata:
+      name: 'ilst-{{name}}'
+      labels:
+        app: ilst
+        cluster-name: '{{name}}'
+    spec:
+      project: ilst
+      source:
+        repoURL: https://github.com/jorgevelasquezv/ilst
+        targetRevision: master
+        path: gitops/argocd/linea-base-dev/deploy-apps/helm-apps/ilst
+        helm:
+          valueFiles:
+            - ../../resources/{{name}}/values.yaml
+      destination:
+        name: '{{name}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+        managedNamespaceMetadata:
+          labels:
+            app.bancolombia.com.co/application-code: nu0201001
+            app.bancolombia.com.co/env: dev
+            app.bancolombia.com.co/project: olk
