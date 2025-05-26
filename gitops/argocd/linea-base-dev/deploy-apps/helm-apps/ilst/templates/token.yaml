@@ -1,16 +1,16 @@
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#   annotations:
-#     argocd.argoproj.io/hook: PreSync
-#   labels:
-#     app.kubernetes.io/component: ibm-licensing-service-svc
-#     app.kubernetes.io/instance: ibm-licensing-service
-#     app.kubernetes.io/managed-by: operator
-#     app.kubernetes.io/name: ibm-licensing-service-instance
-#     release: ibm-licensing-service
-#   name: ibm-licensing-token
-#   namespace: {{ .Values.namespace }}
-# type: Opaque
-# stringData:
-#   token: {{ .Values.token }}
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+  labels:
+    app.kubernetes.io/component: ibm-licensing-service-svc
+    app.kubernetes.io/instance: ibm-licensing-service
+    app.kubernetes.io/managed-by: operator
+    app.kubernetes.io/name: ibm-licensing-service-instance
+    release: ibm-licensing-service
+  name: ibm-licensing-token
+  namespace: {{ .Values.namespace }}
+type: Opaque
+stringData:
+  token: {{ .Values.token }}
