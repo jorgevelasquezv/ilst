@@ -16,5 +16,5 @@ global:
 cpfs:
   imageRegistryNamespaceOperator: cpopen
   imageRegistryNamespaceOperand: cpopen/cpfs
-host:
+# host:
   # name: ilst-transversal-dev.apps.ambientesbc.lab

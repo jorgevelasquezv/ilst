@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sint001-kairos-ilst
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      # - name: eks-apoyo-al-negocio-dev
+      # - name: eks-clientes-dev
+      # - name: eks-composicionmonetario-dev
+      # - name: eks-composicionnomonetario-dev
+      # - name: eks-composicionoperativa-dev
+      # - name: eks-distribucion-digital-dev
+      # - name: eks-ecosistemas-de-riesgos-dev
+      # - name: eks-experienciamonetario-dev
+      - name: in-cluster
+      # - name: eks-experienciaoperativa-dev
+      # - name: eks-filiales-dev
+      # - name: eks-finaclerecaudo-dev
+      # - name: eks-informacion-dev
+      # - name: eks-inmobiliario-dev
+      # - name: eks-integracion-dev
+      # - name: eks-integracionoutposts-dev
+      # - name: eks-integraciontransversal-dev
+      # - name: eks-leasing-dev
+      # - name: eks-medios-de-pago-dev
+      # - name: eks-productos-de-captacion-dev
+      # - name: eks-productos-de-financiacion-dev
+      # - name: eks-sistemamonetario-dev
+      # - name: eks-sistemanomonetario-dev
+      # - name: eks-sistemaoperativa-dev
+
+  template:
+    metadata:
+      name: 'ilst-{{name}}'
+      labels:
+        app: ilst
+        cluster-name: '{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/jorgevelasquezv/ilst.git
+        targetRevision: trunk
+        path: gitops/argocd/linea-base-dev/deploy-apps/helm-apps/ilst
+        helm:
+          valueFiles:
+            - ../../resources/{{name}}/values.yaml
+      destination:
+        name: '{{name}}'
+        namespace: 'ibm-licensing-dev'
+      syncPolicy:
+        automated: {}
+        # managedNamespaceMetadata:
+        #   labels:
+        #     app.bancolombia.com.co/application-code: nu0201001
+        #     app.bancolombia.com.co/cost-center: C103500273
+        #     app.bancolombia.com.co/env: dev
+        #     app.bancolombia.com.co/project: ilst
+        #     app.bancolombia.com.co/responsible: SINT001-KAIROS
