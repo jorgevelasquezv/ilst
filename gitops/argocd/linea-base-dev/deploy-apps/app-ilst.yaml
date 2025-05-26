@@ -42,7 +42,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/jorgevelasquezv/ilst.git
-        targetRevision: trunk
+        targetRevision: master
         path: gitops/argocd/linea-base-dev/deploy-apps/helm-apps/ilst
         helm:
           valueFiles:
