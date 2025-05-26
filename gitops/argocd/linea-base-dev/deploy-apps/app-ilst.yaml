@@ -15,7 +15,7 @@ spec:
       # - name: eks-distribucion-digital-dev
       # - name: eks-ecosistemas-de-riesgos-dev
       # - name: eks-experienciamonetario-dev
-      - name: in-cluster
+      # - name: in-cluster
       # - name: eks-experienciaoperativa-dev
       # - name: eks-filiales-dev
       # - name: eks-finaclerecaudo-dev
@@ -49,7 +49,7 @@ spec:
             - ../../resources/{{name}}/values.yaml
       destination:
         name: '{{name}}'
-        namespace: 'ibm-licensing-dev'
+        namespace: 'ibm-licensing'
       syncPolicy:
         automated: {}
         # managedNamespaceMetadata:
