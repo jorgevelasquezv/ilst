@@ -1,5 +1,6 @@
 namespace: ibm-licensing
 watchNamespace: ibm-licensing
+token: Admin
 
 spec:
   version: 4.2.14
@@ -16,4 +17,4 @@ cpfs:
   imageRegistryNamespaceOperator: cpopen
   imageRegistryNamespaceOperand: cpopen/cpfs
 host:
-  name: ilst-transversal-dev.apps.ambientesbc.lab
+  # name: ilst-transversal-dev.apps.ambientesbc.lab
