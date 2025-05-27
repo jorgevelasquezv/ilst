@@ -10,6 +10,9 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: ServerSideApply=true
 spec:
+  features:
+    hyperThreading:
+      threadsPerCore: 2
   {{- $imagePullData := dict -}}
 
   {{- /* If imagePullSecret is declared, append it to the list of secrets specified in IBMLicensing CR's spec (or create a new list if empty) */ -}}
